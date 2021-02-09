@@ -81,7 +81,8 @@ def index():
         print("4")
         rendered = render_template('test2.html', json=_json)
         print("5")
-        pdfkit.from_string(rendered, pdffile, configuration=config)
+        pdfkit.from_string(rendered, pdffile, options=options) if os.name != "nt" else pdfkit.from_string(
+            rendered, pdffile, options=options, configuration=config)
         print("6")
         return {
             "codRes": "00",
