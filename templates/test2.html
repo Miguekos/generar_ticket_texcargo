@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style>
+    table,
+    th,
+    td {
+<!--      border-bottom: 1px solid black;-->
+    }
+
+    body {
+      width: 30%;
+    }
+
+
+
+
+    </style>
+</head>
+
+<body>
+<div style="text-align: center; padding-bottom: 20px;">
+    <img src="http://127.0.0.1:4545/reporte/static/logo.png" alt="logo" width="100">
+    <br>
+    COMPROBANTE DE ENVIO
+</div>
+<table style="width:100%">
+    <tr>
+        <td>Comuna</td>
+        <td style="text-align: right;"> {{json['registro']['comuna']}}</td>
+    </tr>
+    <tr>
+        <td>Nombre</td>
+        <td style="text-align: right;">{{json['registro']['name']}} {{json['registro']['lastname']}}</td>
+    </tr>
+    <tr>
+        <td>Direccion</td>
+        <td style="text-align: right;">{{json['registro']['direccion']}}</td>
+    </tr>
+    <tr>
+        <td>Telf.</td>
+        <td style="text-align: right;">{{json['registro']['telf']}}</td>
+    </tr>
+    <tr>
+        <td>Tipo de pago</td>
+        <td style="text-align: right;">{{json['registro']['tipodepago']}}</td>
+    </tr>
+    <tr>
+        <td>Valor de flete</td>
+        <td style="text-align: right;">{{json['registro']['valordeflete']}}</td>
+    </tr>
+    <tr>
+        <td>Control</td>
+        <td style="text-align: right;">{{json['registro']['control']}}</td>
+    </tr>
+    <tr>
+        <td>Proveedores</td>
+        <td style="text-align: right;">{{json['registro']['proveedores']}}</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;">Orden: {{ json['registro']['registro'] }}</td>
+        <td style="text-align: center;">{{ json['registro']['created_at']}}</td>
+    </tr>
+</table>
+<div style="text-align: center; padding-top: 20px;">
+    El cliente acepta todos los términos y condiciones publicados en nuestra página web.
+</div>
+<div style="text-align: center; padding-bottom: 10px;">
+    www.texcargo.cl/condiciones
+</div>
+
+
+</body>
+
+</html>
