@@ -8,10 +8,6 @@ import pytz
 from flask_cors import CORS
 from datetime import datetime
 import qrcode  # Importamos el modulo necesario para trabajar con codigos QR
-import win32ui
-import win32api
-import win32print
-import win32con
 import os
 import subprocess
 import sys
@@ -87,17 +83,6 @@ def index():
         print("5")
         pdfkit.from_string(rendered, pdffile, configuration=config)
         print("6")
-        # GHOSTSCRIPT_PATH = "{}\\GHOSTSCRIPT\\bin\\gswin32.exe".format(os.getcwd())
-        # GSPRINT_PATH = "{}\\GSPRINT\\gsprint.exe".format(os.getcwd())
-
-        # YOU CAN PUT HERE THE NAME OF YOUR SPECIFIC PRINTER INSTEAD OF DEFAULT
-        # currentprinter = win32print.GetDefaultPrinter()
-        # currentprinter = "Canon G3010 series"
-        # print(currentprinter)
-        #
-        # win32api.ShellExecute(0, 'open', GSPRINT_PATH,
-        #                       '-ghostscript "' + GHOSTSCRIPT_PATH + '" -printer "' + currentprinter + '" "{}"'.format(pdffile),
-        #                       '.', 0)
         return {
             "codRes": "00",
             "message": "http://95.111.235.214:5454/fileserver/tickets/{}.pdf".format(_json['registro']['registro'])
