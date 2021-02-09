@@ -85,7 +85,7 @@ def index():
         print("6")
         return {
             "codRes": "00",
-            "message": "http://95.111.235.214:5454/fileserver/tickets/{}.pdf".format(_json['registro']['registro'])
+            "message": "http://95.111.235.214:4545/fileserver/tickets/{}.pdf".format(_json['registro']['registro'])
             # "message": "http://127.0.0.1:4545/fileserver/tickets/{}.pdf".format(_json['registro']['registro'])
         }
     except NameError:
