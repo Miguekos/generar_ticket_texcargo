@@ -9,9 +9,5 @@ services:
     command: python3 app.py
     volumes:
       - /usr/local/volumes/generar_ticket_texcargo/fileserver/:/app/fileserver/
-    logging:
-      options:
-        max-file: 5
-        max-size: 10m
     ports:
       - "4545:4545"
