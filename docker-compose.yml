@@ -10,7 +10,6 @@ services:
     volumes:
       - /usr/local/volumes/generar_ticket_texcargo/fileserver/:/app/fileserver/
     logging:
-      driver: "json-file"
       options:
         max-file: 5
         max-size: 10m
