@@ -30,6 +30,7 @@ app.config['PDF_FOLDER'] = 'fileserver/'
 app.config['TEMPLATE_FOLDER'] = 'templates/'
 app.config['STATIC'] = 'static/'
 
+
 @app.route('/reporte/static/<filename>')
 def uploaded_file_static(filename):
     return send_from_directory(app.config['STATIC'],
@@ -62,10 +63,10 @@ options = {
 }
 
 
-# @app.route('/fileserver/tickets/<filename>')
-# def uploaded_file(filename):
-#     return send_from_directory(app.config['PDF_FOLDER'],
-#                                filename)
+@app.route('/fileserver/tickets/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['PDF_FOLDER'],
+                               filename)
 
 
 # @app.route('/api/imprimirticketpdf', methods=['POST'])
@@ -76,8 +77,15 @@ def main(data):
         _json = data
         _json['registro']['registro'] = int(_json['registro']['registro'])
         _json['registro']['created_at'] = "{}".format(_json['registro']['created_at'])
+        id = _json['id']
+        imagen = qrcode.make("{}".format(id))
+        archivo_imagen = open(app.config['PDF_FOLDER'] + '{}.png'.format(_json['registro']['registro']), 'wb')
+        imagen.save(archivo_imagen)
+        archivo_imagen.close()
         pdffile = '{}fileserver/{}.pdf'.format(os.getcwd(), _json['registro']['registro'])
-        rendered = render_template('test2.html', json=_json)
+        rendered = render_template('test2.html', json=_json,
+                                   qr="http://127.0.0.1:5454/fileserver/tickets/{}.png".format(
+                                       _json['registro']['registro']))
         pdfkit.from_string(rendered, pdffile, options=options, configuration=config)
         GHOSTSCRIPT_PATH = "{}\\GHOSTSCRIPT\\bin\\gswin32.exe".format(os.getcwd())
         GSPRINT_PATH = "{}\\GSPRINT\\gsprint.exe".format(os.getcwd())
