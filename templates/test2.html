@@ -1,83 +1,261 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <style>
-    table,
-    th,
-    td {
-<!--      border-bottom: 1px solid black;-->
-    }
-
-    body {
-      width: 30%;
-    }
-
-
-
-
-
-    </style>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Estado de Cuenta</title>
 </head>
 
-<body>
-<div style="text-align: center; padding-bottom: 10px;">
-    <img src="http://127.0.0.1:4545/reporte/static/logo.png" alt="logo" width="100">
-    <br>
-    COMPROBANTE DE ENVIO
-</div>
-<div style="text-align: center; padding-bottom: 10px;">
-    <td style="text-align: center;">Orden: {{ json['registro']['registro'] }}</td>
-</div>
-<table style="width:100%">
-    <tr>
-        <td>Comuna</td>
-        <td style="text-align: right;"> {{json['registro']['comuna']}}</td>
-    </tr>
-    <tr>
-        <td>Nombre</td>
-        <td style="text-align: right;">{{json['registro']['name']}} {{json['registro']['lastname']}}</td>
-    </tr>
-    <tr>
-        <td>Direccion</td>
-        <td style="text-align: right;">{{json['registro']['direccion']}}</td>
-    </tr>
-    <tr>
-        <td>Telf.</td>
-        <td style="text-align: right;">{{json['registro']['telf']}}</td>
-    </tr>
-    <tr>
-        <td>Tipo de pago</td>
-        <td style="text-align: right;">{{json['registro']['tipodepago']}}</td>
-    </tr>
-    <tr>
-        <td>Valor de flete</td>
-        <td style="text-align: right;">{{json['registro']['valordeflete']}}</td>
-    </tr>
-    <tr>
-        <td>Control</td>
-        <td style="text-align: right;">{{json['registro']['control']}}</td>
-    </tr>
-    <tr>
-        <td>Proveedores</td>
-        <td style="text-align: right;">{{json['registro']['proveedores']}}</td>
-    </tr>
-</table>
-<div style="text-align: center; padding-top: 20px;">
-    <td style="text-align: center;">{{ json['registro']['created_at']}}</td>
-</div>
-<div style="text-align: center; padding-top: 20px;">
-    El cliente acepta todos los términos y condiciones publicados en nuestra página web.
-</div>
-<div style="text-align: center; padding-bottom: 10px;">
-    www.texcargo.cl/condiciones
-</div>
-<div style="text-align: center; padding-top: 5px;">
-    <td style="text-align: right;"><img src="{{ qr }}" alt="logo" width="100"></td>
-</div>
+<body class="">
 
+<div style="margin-left: 4%; margin-right: 6%; font-size: 40px">
+    <div style="text-align: center; padding-bottom: 10px;">
+        COMPROBANTE DE ENVIO
+    </div>
+    <div style="text-align: center; padding-bottom: 10px;">
+        <td style="text-align: center;">Orden: {{ json['registro']['registro'] }}</td>
+    </div>
 
+    <section class="info text-primary container">
+
+        <div class="info-personal">
+            <!--            {{ json }}-->
+            <table style="width:100%">
+                <tr>
+                    <td>Comuna</td>
+                    <td style="text-align: right;"> {{json['registro']['comuna']}}</td>
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td style="text-align: right;">{{json['registro']['name']}} {{json['registro']['lastname']}}</td>
+                </tr>
+                <tr>
+                    <td>Direccion</td>
+                    <td style="text-align: right;">{{json['registro']['direccion']}}</td>
+                </tr>
+                <tr>
+                    <td>Telf.</td>
+                    <td style="text-align: right;">{{json['registro']['telf']}}</td>
+                </tr>
+                <tr>
+                    <td>Tipo de pago</td>
+                    <td style="text-align: right;">{{json['registro']['tipodepago']}}</td>
+                </tr>
+                <tr>
+                    <td>Valor de flete</td>
+                    <td style="text-align: right;">{{json['registro']['valordeflete']}}</td>
+                </tr>
+                <tr>
+                    <td>Control</td>
+                    <td style="text-align: right;">{{json['registro']['control']}}</td>
+                </tr>
+                <tr>
+                    <td>Proveedores</td>
+                    <td style="text-align: right;">{{json['registro']['proveedores']}}</td>
+                </tr>
+            </table>
+            <div style="text-align: center; padding-top: 20px;">
+                <td style="text-align: center;">{{ json['registro']['created_at']}}</td>
+            </div>
+            <div style="text-align: center; padding-top: 20px;">
+                <!--                El cliente acepta todos los términos y condiciones publicados en nuestra página web.-->
+            </div>
+            <div style="text-align: center; padding-bottom: 10px;">
+                <!--                www.texcargo.cl/condiciones-->
+            </div>
+            <div style="text-align: center; padding-top: 5px;">
+                <img src="http://127.0.0.1:4545/reporte/static/Logo1.543c9584.jpg" alt="logo" width="250"
+                     style="border-radius: 10px; margin-bottom: 45px;">
+                <td style="text-align: right;"><img src="{{ qr }}" alt="logo" width="200"></td>
+                <img src="http://127.0.0.1:4545/reporte/static/logoweb.png" alt="logo" width="250" style="border-radius: 10px; margin-bottom: 45px;">
+            </div>
+
+            <div class="text-primary" align="center">
+                <!--                <img width="600px" class="heade__img" src="http://127.0.0.1:3003/reporte/static/linea_carta_cliente_fr.png" alt="logo"/>-->
+            </div>
+        </div>
+    </section>
+</div>
 </body>
+<style>
+  * {
+    margin: 100;
+    text-decoration: none;
+    list-style: none;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .header {
+    height: 70px;
+<!--    background-color: #f8713c;-->
+    padding: 5px;
+  }
+
+  .heade__img {
+    height: inherit;
+  }
+
+  .info {
+<!--    background-color: #f3f3f3;-->
+    padding: 20px;
+  }
+
+  .info-personal__nombres {
+    font-size: 1em;
+  }
+
+  .info-personal__dni {
+    font-size: 0.75em;
+  }
+
+  .info-personal__cuenta {
+    margin: 10px 0;
+  }
+
+  .cuenta-datos {
+    margin: 0 165px;
+  }
+
+  .cuenta-datos__credito {
+    margin: 20px 40px;
+    float: left;
+  }
+
+  .cuenta-datos__fecha {
+    margin: 20px 40px;
+    float: left;
+  }
+
+  .cuenta-datos--center {
+    text-align: center;
+  }
+
+  .cuenta-datos--barra {
+    border-bottom: 1.8px solid #737373;
+  }
+
+  .info-pago {
+    clear: both;
+  }
+
+  .detalles-pago__left {
+    float: left;
+  }
+
+  .detalles-pago__right {
+    float: right;
+  }
+
+  .info-operaciones {
+    clear: both;
+  }
+
+  .divider {
+    margin: 4px 0 6px;
+  }
+
+  .detalles-pago__tabla {
+    width: 350px;
+    margin: 20px 0;
+  }
+
+  .detalles-pago__tabla td {
+    border: 1px solid #737373;
+    padding: 5px 10px;
+    width: 175px;
+  }
+
+  .tabla-operaciones {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    text-align: center;
+  }
+
+  .tabla-operaciones th {
+    border: 1px solid #737373;
+  }
+
+  .tabla-operaciones td {
+    padding: 5px 10px;
+  }
+
+  .tabla-operaciones-body {
+    border: 1px solid #737373;
+  }
+
+  .tabla-cuotas td {
+    border: 1px solid #737373;
+    padding: 5px 10px;
+    text-align: center;
+  }
+
+  .tabla-cuotas {
+    margin: 10px 0;
+  }
+
+  .leyenda {
+    margin: 20px 0;
+    font-size: 0.9em;
+  }
+
+  .footer {
+    padding: 20px;
+    font-size: 0.8em;
+  }
+
+  .text-primary {
+<!--    color: #2d559a;-->
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
 
 </html>

@@ -72,6 +72,7 @@ def index(tipo):
         lima = pytz.timezone('America/Lima')
         li_time = datetime.now(lima)
         _json = request.json
+        print("_json", _json)
         _json['registro']['registro'] = int(_json['registro']['registro'])
         _json['registro']['created_at'] = "{}".format(_json['registro']['created_at'])
         global imagen
@@ -82,6 +83,7 @@ def index(tipo):
         if tipo == "2":
             imagen = qrcode.make("{}".format(_json['id']))
         archivo_imagen = open(app.config['PDF_FOLDER'] + '{}_{}.png'.format(_json['registro']['registro'], tipo), 'wb')
+        print("archivo_imagen", archivo_imagen)
         imagen.save(archivo_imagen)
         archivo_imagen.close()
         pdffile = app.config['PDF_FOLDER'] + '{}_{}.pdf'.format(_json['registro']['registro'], tipo)
