@@ -9,7 +9,7 @@
 
 <body class="">
 
-<div style="margin-left: 4%; margin-right: 6%; font-size: 30px">
+<div style="margin-left: 4%; margin-right: 6%; font-size: 40px">
     <div style="text-align: center; padding-bottom: 10px;">
         COMPROBANTE DE ENVIO
     </div>
@@ -20,45 +20,43 @@
     <section class="info text-primary container">
 
         <div class="info-personal">
-            <!--                        {{ json['detalle']['billing'] }}-->
+            <!--            {{ json }}-->
             <table style="width:100%">
-                <tr style="padding: 10px 0px 10px 0px;">
+                <tr>
+                    <td>Comuna</td>
+                    <td style="text-align: right;"> {{json['registro']['comuna']}}</td>
+                </tr>
+                <tr>
                     <td>Nombre</td>
-                    <td style="text-align: right;"> {{json['detalle']['billing']['first_name'] }} {{json['detalle']['billing']['last_name']}}</td>
-                </tr>
-                <tr style="padding: 10px 0px 10px 0px;">
-                    <td>Whastapp</td>
-                    <td style="text-align: right;">{{json['detalle']['billing']['phone']}}</td>
+                    <td style="text-align: right;">{{json['registro']['name']}} {{json['registro']['lastname']}}</td>
                 </tr>
                 <tr>
-                    <td>Fecha</td>
-                    <td style="text-align: right;">{{ fecha }}</td>
-                </tr>
-            </table>
-            <div style="text-align: center; padding: 10px 0 10px 0;">
-                NO RECIBIR PRODUCTO EN MAL ESTADO
-            </div>
-            <table style="width:100%">
-
-                <tr>
-                    <td>Entrega Comuna</td>
-                    <td style="text-align: right;">{{json['detalle']['billing']['city']}}</td>
+                    <td>Direccion</td>
+                    <td style="text-align: right;">{{json['registro']['direccion']}}</td>
                 </tr>
                 <tr>
-                    <td>Entrega Calle</td>
-                    <td style="text-align: right;">{{json['detalle']['billing']['address_1']}}</td>
+                    <td>Telf.</td>
+                    <td style="text-align: right;">{{json['registro']['telf']}}</td>
                 </tr>
                 <tr>
-                    <td>Mensaje</td>
-                    <td style="text-align: right;"></td>
+                    <td>Tipo de pago</td>
+                    <td style="text-align: right;">{{json['registro']['tipodepago']}}</td>
                 </tr>
                 <tr>
-                    <td>Producto</td>
-                    <td style="text-align: right;">{{json['detalle']['line_items'][0]['name']}}</td>
+                    <td>Valor de flete</td>
+                    <td style="text-align: right;">{{json['registro']['valordeflete']}}</td>
+                </tr>
+                <tr>
+                    <td>Control</td>
+                    <td style="text-align: right;">{{json['registro']['control']}}</td>
+                </tr>
+                <tr>
+                    <td>Proveedores</td>
+                    <td style="text-align: right;">{{json['registro']['proveedores']}}</td>
                 </tr>
             </table>
             <div style="text-align: center; padding-top: 20px;">
-                <td style="text-align: center;"> <b> {{ json['registro']['tipodepago']}} </b></td>
+                <td style="text-align: center;">{{ json['registro']['created_at']}}</td>
             </div>
             <div style="text-align: center; padding-top: 20px;">
                 <!--                El cliente acepta todos los términos y condiciones publicados en nuestra página web.-->
@@ -215,8 +213,6 @@
   .text-primary {
 <!--    color: #2d559a;-->
   }
-
-
 
 
 

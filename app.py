@@ -87,7 +87,11 @@ def index(tipo):
         imagen.save(archivo_imagen)
         archivo_imagen.close()
         pdffile = app.config['PDF_FOLDER'] + '{}_{}.pdf'.format(_json['registro']['registro'], tipo)
-        rendered = render_template('test2.html', json=_json,
+        # Variables
+        fecha = datetime.strptime(_json['detalle']['date_created'], '%Y-%m-%dT%H:%M:%S')
+        # print("fecha-->", fecha.strftime("%d/%m/%Y"))
+        fecha = fecha.strftime("%d/%m/%Y")
+        rendered = render_template('test2.html', json=_json, fecha=fecha,
                                    qr="http://95.111.235.214:4545/fileserver/tickets/{}_{}.png".format(
                                        _json['registro']['registro'], tipo))
         pdfkit.from_string(rendered, pdffile, options=options) if os.name != "nt" else pdfkit.from_string(
