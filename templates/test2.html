@@ -32,10 +32,10 @@
     {% for json in jsonarrawy %}
     <div class="column" style="border: 1px solid black">
         <div>
-            <div style="text-align: center; padding-bottom: 10px;">
+            <div style="text-align: center; padding-bottom: 5px;">
                 COMPROBANTE DE ENVIO
             </div>
-            <div style="text-align: center; padding-bottom: 10px;">
+            <div style="text-align: center; padding-bottom: 5px;">
                 <td style="text-align: center;">Orden: {{ json['registro']['registro'] }}</td>
             </div>
 
@@ -44,13 +44,13 @@
                 <div class="info-personal">
                     <!--                        {{ json['detalle']['billing'] }}-->
                     <table style="width:100%">
-                        <tr style="padding: 10px 0px 10px 0px;">
+                        <tr style="padding: 5px 0px 5px 0px;">
                             <td>Nombre</td>
                             <td style="text-align: right;"> {{json['detalle']['billing']['first_name'] }}
                                 {{json['detalle']['billing']['last_name']}}
                             </td>
                         </tr>
-                        <tr style="padding: 10px 0px 10px 0px;">
+                        <tr style="padding: 5px 0px 5px 0px;">
                             <td>Whastapp</td>
                             <td style="text-align: right;">{{json['detalle']['billing']['phone']}}</td>
                         </tr>
@@ -59,7 +59,7 @@
                             <td style="text-align: right;">{{ fecha }}</td>
                         </tr>
                     </table>
-                    <div style="text-align: center; padding: 10px 0 10px 0;">
+                    <div style="text-align: center; padding: 5px 0 5px 0;">
                         NO RECIBIR PRODUCTO EN MAL ESTADO
                     </div>
                     <table style="width:100%">
@@ -88,7 +88,7 @@
 
                         </tr>
                     </table>
-                    <div style="text-align: center; padding-top: 20px;">
+                    <div style="text-align: center; padding-top: 15px;">
                         <td style="text-align: center;"><b> {{ json['registro']['tipodepago']}}  ${{ json['detalle']['precio'] }}.00 </b></td>
                     </div>
                     <div style="text-align: center; padding-top: 5px;">
