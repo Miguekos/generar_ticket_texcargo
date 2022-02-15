@@ -109,6 +109,56 @@ def index(tipo):
         }
 
 
+@app.route('/fileserver/imprimirticketpdfarray/<tipo>', methods=['POST'])
+def indexarray(tipo):
+    try:
+        print("iniciando proceso...")
+        lima = pytz.timezone('America/Lima')
+        li_time = datetime.now(lima)
+        pdfs = request.json
+        pdfs_ready = []
+        for _json in pdfs:
+            print("_json", _json)
+            _json['registro']['registro'] = int(_json['registro']['registro'])
+            _json['registro']['created_at'] = "{}".format(_json['registro']['created_at'])
+            global imagen
+            imagen = ""
+            if tipo == "1":
+            # id = _json['id']
+                imagen = qrcode.make("https://tracking.texcargo.cl/tracking.php?id={}".format(_json['registro']['registro']))
+            if tipo == "2":
+                imagen = qrcode.make("{}".format(_json['id']))
+            archivo_imagen = open(app.config['PDF_FOLDER'] + '{}_{}.png'.format(_json['registro']['registro'], tipo), 'wb')
+            print("archivo_imagen", archivo_imagen)
+            imagen.save(archivo_imagen)
+            archivo_imagen.close()
+            fecha = datetime.strptime(_json['detalle']['date_created'], '%Y-%m-%dT%H:%M:%S')
+            # print("fecha-->", fecha.strftime("%d/%m/%Y"))
+            fecha = fecha.strftime("%d/%m/%Y")
+            _json['fecha'] = fecha
+            _json['qr'] = "http://95.111.235.214:4545/fileserver/tickets/{}_{}.png".format(_json['registro']['registro'], tipo)
+            pdfs_ready.append(_json)
+
+
+        pdffile = app.config['PDF_FOLDER'] + '{}_{}.pdf'.format(pdfs[0]['registro']['registro'], tipo)
+        # Variables
+        rendered = render_template('test2.html', jsonarrawy=pdfs_ready)
+        pdfkit.from_string(rendered, pdffile, options=options) if os.name != "nt" else pdfkit.from_string(
+            rendered, pdffile, options=options, configuration=config)
+        return {
+            "codRes": "00",
+            # "message": "http://95.111.235.214:4545/fileserver/tickets/{}.pdf".format(_json['registro']['registro'])
+            "message": "http://95.111.235.214:4545/fileserver/tickets/{}_{}.pdf".format(pdfs[0]['registro']['registro'], tipo),
+            "id" : "{}".format(pdfs[0]['registro']['registro'])
+        }
+    except NameError:
+        # print(NameError)
+        return {
+            "codRes": "99",
+            "message": "Error controlado"
+        }
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=4545, host="0.0.0.0")
     # socketio.run(app, debug=True, port=5454, host="0.0.0.0")
