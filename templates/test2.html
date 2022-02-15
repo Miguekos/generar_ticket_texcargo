@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
 * {
@@ -12,7 +13,7 @@
   float: left;
   width: 50%;
   padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
+  height: 440px; /* Should be removed. Only for demonstration */
 }
 
 /* Clear floats after the columns */
@@ -29,7 +30,7 @@
 
 <div class="row">
     {% for json in jsonarrawy %}
-    <div class="column">
+    <div class="column" style="border: 1px solid black">
         <div>
             <div style="text-align: center; padding-bottom: 10px;">
                 COMPROBANTE DE ENVIO
@@ -88,20 +89,14 @@
                         </tr>
                     </table>
                     <div style="text-align: center; padding-top: 20px;">
-                        <td style="text-align: center;"><b> {{ json['registro']['tipodepago']}} </b></td>
-                    </div>
-                    <div style="text-align: center; padding-top: 20px;">
-                        <!--                El cliente acepta todos los términos y condiciones publicados en nuestra página web.-->
-                    </div>
-                    <div style="text-align: center; padding-bottom: 10px;">
-                        <!--                www.texcargo.cl/condiciones-->
+                        <td style="text-align: center;"><b> {{ json['registro']['tipodepago']}}  ${{ json['detalle']['precio'] }}.00 </b></td>
                     </div>
                     <div style="text-align: center; padding-top: 5px;">
                         <img src="http://127.0.0.1:4545/reporte/static/Logo1.543c9584.jpg" alt="logo" width="110"
-                             style="border-radius: 10px; margin-bottom: 45px;">
-                        <td style="text-align: right;"><img src="{{ qr }}" alt="logo" width="60"></td>
+                             style="border-radius: 10px; margin-bottom: 18px;">
+                        <td style="text-align: right;"><img src="{{ json['qr'] }}" alt="logo" width="80"></td>
                         <img src="http://127.0.0.1:4545/reporte/static/logoweb.png" alt="logo" width="110"
-                             style="border-radius: 10px; margin-bottom: 45px;">
+                             style="border-radius: 10px; margin-bottom: 18px;">
                     </div>
 
                     <div class="text-primary" align="center">
