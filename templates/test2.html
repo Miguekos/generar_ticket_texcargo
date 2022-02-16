@@ -66,7 +66,7 @@
 
                         <tr>
                             <td>Entrega Comuna</td>
-                            <td style="text-align: right;">{{json['detalle']['billing']['city']}}</td>
+                            <td style="text-align: right;">{{json['registro']['comuna']}}</td>
                         </tr>
                         <tr>
                             <td>Entrega Calle</td>
@@ -88,8 +88,8 @@
 
                         </tr>
                     </table>
-                    <div style="text-align: center; padding-top: 15px;">
-                        <td style="text-align: center;"><b> {{ json['registro']['tipodepago']}}  ${{ json['detalle']['precio'] }}.00 </b></td>
+                    <div style="text-align: center; padding-top: 5px;">
+                        <td style="text-align: center;"><b> {{ json['registro']['tipodepago']}}  ${{ json['registro']['valordeflete'] if json['registro']['valordeflete'] != '0.00' else ''  }} </b></td>
                     </div>
                     <div style="text-align: center; padding-top: 5px;">
                         <img src="http://127.0.0.1:4545/reporte/static/Logo1.543c9584.jpg" alt="logo" width="110"
