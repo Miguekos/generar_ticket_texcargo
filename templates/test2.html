@@ -6,6 +6,8 @@
     <style>
 * {
   box-sizing: border-box;
+
+
 }
 
 /* Create two equal columns that floats next to each other */
@@ -13,7 +15,9 @@
   float: left;
   width: 50%;
   padding: 10px;
-  height: 440px; /* Should be removed. Only for demonstration */
+  height: 430px; /* Should be removed. Only for demonstration */
+  page-break-inside: avoid;
+
 }
 
 /* Clear floats after the columns */
@@ -21,6 +25,19 @@
   content: "";
   display: table;
   clear: both;
+
+}
+
+.keep-together {
+    page-break-inside: avoid;
+}
+
+.break-before {
+    page-break-before: always;
+}
+
+.break-after {
+    page-break-after: always;
 }
 
 
@@ -33,7 +50,7 @@
     <div class="column" style="border: 1px solid black">
         <div>
             <div style="text-align: center; padding-bottom: 5px;">
-                COMPROBANTE DE ENVIO -> test
+                COMPROBANTE DE ENVIO
             </div>
             <div style="text-align: center; padding-bottom: 15px;">
                 <td style="text-align: center;">Orden: {{ json['registro']['registro'] }}</td>
@@ -42,7 +59,6 @@
             <section class="info text-primary container">
 
                 <div class="info-personal">
-                    <!--                        {{ json['detalle']['billing'] }}-->
                     <table style="width:100%">
                         <tr style="padding: 5px 0px 5px 0px;">
                             <td>Nombre</td>
@@ -100,7 +116,6 @@
                     </div>
 
                     <div class="text-primary" align="center">
-                        <!--                <img width="600px" class="heade__img" src="http://127.0.0.1:3003/reporte/static/linea_carta_cliente_fr.png" alt="logo"/>-->
                     </div>
                 </div>
             </section>

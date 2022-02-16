@@ -118,7 +118,7 @@ def indexarray(tipo):
         pdfs = request.json
         pdfs_ready = []
         for _json in pdfs:
-            print("_json", _json)
+            # print("_json", _json)
             _json['registro']['registro'] = int(_json['registro']['registro'])
             _json['registro']['created_at'] = "{}".format(_json['registro']['created_at'])
             global imagen
@@ -129,7 +129,7 @@ def indexarray(tipo):
             if tipo == "2":
                 imagen = qrcode.make("{}".format(_json['id']))
             archivo_imagen = open(app.config['PDF_FOLDER'] + '{}_{}.png'.format(_json['registro']['registro'], tipo), 'wb')
-            print("archivo_imagen", archivo_imagen)
+            # print("archivo_imagen", archivo_imagen)
             imagen.save(archivo_imagen)
             archivo_imagen.close()
             fecha = datetime.strptime(_json['detalle']['date_created'], '%Y-%m-%dT%H:%M:%S')

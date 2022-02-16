@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Reporte Equas</title>
+
+    <style>
+        body {
+            font-family: arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            page-break-inside: avoid !important;
+        }
+
+        th {
+            width: 4%;
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 10px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+
+        * {
+          box-sizing: border-box;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+          float: left;
+          width: 50%;
+          padding: 10px;
+          height: 440px; /* Should be removed. Only for demonstration */
+          word-wrap: break-word;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+
+    </style>
+</head>
+
+<!--<body style="border:0; margin: 0;" onload="subst()">-->
+<body>
+<!--    <div class="logo">-->
+<!--        <img src="http://127.0.0.1:5238/gnrpdf/static/logo_equas_solid.png" alt="logo" width="20%">-->
+<!--    </div>-->
+
+<div>
+
+    <table>
+
+        <tr style="page-break-inside: avoid !important;">
+{% for json in jsonarrawy %}
+
+            <td>
+
+asdasdasd
+
+            </td>
+
+
+{% endfor %}
+        </tr>
+
+
+
+    </table>
+
+</div>
+</body>
+
+</html>
