@@ -72,7 +72,7 @@
                         </tr>
                         <tr>
                             <td>Fecha</td>
-                            <td style="text-align: right;">{{ fecha }}</td>
+                            <td style="text-align: right;">{{ json['fecha'] }}</td>
                         </tr>
                     </table>
                     <div style="text-align: center; padding: 5px 0 5px 0;">
@@ -87,10 +87,6 @@
                         <tr>
                             <td>Entrega Calle</td>
                             <td style="text-align: right;">{{json['detalle']['billing']['address_1']}}</td>
-                        </tr>
-                        <tr>
-                            <td>Mensaje</td>
-                            <td style="text-align: right;"></td>
                         </tr>
                         <tr>
                             <td>Producto(s)</td>
@@ -110,7 +106,7 @@
                     <div style="text-align: center; padding-top: 5px;">
                         <img src="http://127.0.0.1:4545/reporte/static/Logo1.543c9584.jpg" alt="logo" width="110"
                              style="border-radius: 10px; margin-bottom: 18px;">
-                        <td style="text-align: right;"><img src="{{ json['qr'] }}" alt="logo" width="110"></td>
+                        <td style="text-align: right;"><img src="{{ json['qr'] }}" alt="logo" width="130"></td>
                         <img src="http://127.0.0.1:4545/reporte/static/logoweb.png" alt="logo" width="110"
                              style="border-radius: 10px; margin-bottom: 18px;">
                     </div>
