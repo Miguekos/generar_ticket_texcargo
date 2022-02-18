@@ -127,7 +127,7 @@ def indexarray(tipo):
             # id = _json['id']
                 imagen = qrcode.make("https://tracking.texcargo.cl/tracking.php?id={}".format(_json['registro']['registro']))
             if tipo == "2":
-                imagen = qrcode.make("{}".format(_json['id']))
+                imagen = qrcode.make("{}".format(_json['registro']['registro']))
             archivo_imagen = open(app.config['PDF_FOLDER'] + '{}_{}.png'.format(_json['registro']['registro'], tipo), 'wb')
             # print("archivo_imagen", archivo_imagen)
             imagen.save(archivo_imagen)
