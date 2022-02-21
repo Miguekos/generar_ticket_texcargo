@@ -120,7 +120,7 @@ div.absolute {
                 <td style="text-align: right;">
                     {% for result in json['detalle']['line_items'] %}
                     <div>
-                        {{ result['name'] }}
+                        {{ result['quantity'] }} de {{ result['name'] }}
                     </div>
                     {% endfor %}
                 </td>
