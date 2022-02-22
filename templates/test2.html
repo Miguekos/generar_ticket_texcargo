@@ -67,6 +67,7 @@ div.absolute {
 
 
 
+
     </style>
 </head>
 <body>
@@ -91,12 +92,12 @@ div.absolute {
                 <td>Whastapp</td>
                 <td style="text-align: right;">{{json['detalle']['billing']['phone']}}</td>
             </tr>
-            {% if json['detalle']['customer_note'] != "" %}
+
             <tr style="padding: 5px 0px 5px 0px;">
                 <td>RUT</td>
-                <td style="text-align: right;">{{json['detalle']['customer_note']}}</td>
+                <td style="text-align: right;">{{json['rut']}}</td>
             </tr>
-            {% endif %}
+
             <tr>
                 <td>Fecha</td>
                 <td style="text-align: right;">{{ json['fecha'] }}</td>

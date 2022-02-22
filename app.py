@@ -78,7 +78,7 @@ def index(tipo):
         global imagen
         imagen = ""
         if tipo == "1":
-        # id = _json['id']
+            # id = _json['id']
             imagen = qrcode.make("https://tracking.texcargo.cl/tracking.php?id={}".format(_json['registro']['registro']))
         if tipo == "2":
             imagen = qrcode.make("{}".format(_json['id']))
@@ -124,7 +124,7 @@ def indexarray(tipo):
             global imagen
             imagen = ""
             if tipo == "1":
-            # id = _json['id']
+                # id = _json['id']
                 imagen = qrcode.make("https://tracking.texcargo.cl/tracking.php?id={}".format(_json['registro']['registro']))
             if tipo == "2":
                 imagen = qrcode.make("{}".format(_json['registro']['registro']))
@@ -137,8 +137,13 @@ def indexarray(tipo):
             fecha = fecha.strftime("%d/%m/%Y")
             _json['fecha'] = fecha
             _json['qr'] = "http://95.111.235.214:4545/fileserver/tickets/{}_{}.png".format(_json['registro']['registro'], tipo)
+            for d in _json['detalle']['meta_data']:
+                # print("d->", d['key'])
+                if d['key'] == 'rut':
+                    _json['rut'] = d['value']
+                else:
+                    _json['rut'] = _json['detalle']['customer_note']
             pdfs_ready.append(_json)
-
 
         pdffile = app.config['PDF_FOLDER'] + '{}_{}.pdf'.format(pdfs[0]['registro']['registro'], tipo)
         # Variables
@@ -149,7 +154,7 @@ def indexarray(tipo):
             "codRes": "00",
             # "message": "http://95.111.235.214:4545/fileserver/tickets/{}.pdf".format(_json['registro']['registro'])
             "message": "http://95.111.235.214:4545/fileserver/tickets/{}_{}.pdf".format(pdfs[0]['registro']['registro'], tipo),
-            "id" : "{}".format(pdfs[0]['registro']['registro'])
+            "id": "{}".format(pdfs[0]['registro']['registro'])
         }
     except NameError:
         # print(NameError)
