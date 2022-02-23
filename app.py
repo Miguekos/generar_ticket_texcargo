@@ -141,8 +141,10 @@ def indexarray(tipo):
                 # print("d->", d['key'])
                 if d['key'] == 'rut':
                     _json['rut'] = d['value']
-
-            _json['rut'] = _json['rut'] if len(_json['rut']) > 0 else _json['detalle']['customer_note']
+            try:
+                _json['rut'] = _json['rut'] if len(_json['rut']) > 0 else _json['detalle']['customer_note']
+            except:
+                _json['rut'] = ""
             pdfs_ready.append(_json)
 
         pdffile = app.config['PDF_FOLDER'] + '{}_{}.pdf'.format(pdfs[0]['registro']['registro'], tipo)
