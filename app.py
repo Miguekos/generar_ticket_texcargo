@@ -136,6 +136,7 @@ def indexarray(tipo):
             # print("fecha-->", fecha.strftime("%d/%m/%Y"))
             fecha = fecha.strftime("%d/%m/%Y")
             _json['fecha'] = fecha
+            _json['rut'] = ""
             _json['qr'] = "http://95.111.235.214:4545/fileserver/tickets/{}_{}.png".format(_json['registro']['registro'], tipo)
             for d in _json['detalle']['meta_data']:
                 # print("d->", d['key'])
