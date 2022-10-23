@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+* {
+  box-sizing: border-box;
+
+
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+    position: relative;
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 520px; /* Should be removed. Only for demonstration */
+  page-break-inside: avoid;
+
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+
+}
+
+.footer {
+    position: fixed;
+    left: 10px;
+    bottom: 5px;
+    right: 10px;
+    width: 95%;
+    background-color: gray;
+    color: white;
+    text-align: center;
+}
+
+.keep-together {
+    page-break-inside: avoid;
+}
+
+.break-before {
+    page-break-before: always;
+}
+
+.break-after {
+    page-break-after: always;
+}
+
+
+
+div.absolute {
+    position: absolute;
+    top: 395px;
+    right: 0%;
+    width: 100%;
+    height: 226px;
+}
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="row">
+    {% for json in jsonarrawy %}
+    <div class="column" style="border: 1px solid black">
+
+        <div style="text-align: center; padding-bottom: 5px;">
+            <td style="text-align: center;">Orden: {{ json['registro'] }}</td>
+        </div>
+
+
+        <table style="width:100%">
+            <tr style="padding: 5px 0px 5px 0px;">
+                <td>Nombre</td>
+                <td style="text-align: right;"> {{json['name'] }}
+                    {{json['lastname']}}
+                </td>
+            </tr>
+            <tr style="padding: 5px 0px 5px 0px;">
+                <td>Whastapp</td>
+                <td style="text-align: right;">{{json['telf']}}</td>
+            </tr>
+            <tr style="padding: 5px 0px 5px 0px;">
+                <td>Control</td>
+                <td style="text-align: right;">{{json['control']}}</td>
+            </tr>
+
+            <tr style="padding: 5px 0px 5px 0px;">
+                <td>Proveedores</td>
+                <td style="text-align: right;">{{json['proveedores']}}</td>
+            </tr>
+
+            <tr>
+                <td>Fecha</td>
+                <td style="text-align: right;">{{ json['fecha'] }}</td>
+            </tr>
+        </table>
+        <div style="text-align: center; padding: 5px 0 5px 0;">
+            NO RECIBIR PRODUCTO EN MAL ESTADO
+        </div>
+        <table style="width:100%">
+
+            <tr>
+                <td>Entrega Comuna</td>
+                <td style="text-align: right;">{{json['comuna']}}</td>
+            </tr>
+            <tr>
+                <td>Entrega Calle</td>
+                <td style="text-align: right;">{{json['direccion']}}</td>
+            </tr>
+        </table>
+        <div style="text-align: center; padding-top: 5px;">
+            <td style="text-align: center;"><b> {{ json['tipodepago']}} </b></td>
+        </div>
+        <div class="absolute">
+            <div style="text-align: center;">
+                <img src="http://127.0.0.1:4545/reporte/static/Logo1.543c9584.jpg" alt="logo" width="110"
+                     style="border-radius: 10px; margin-bottom: 30px;">
+                <td style="text-align: right;"><img src="{{ json['qr'] }}" alt="logo" width="120"></td>
+                <img src="{{ json['logoporvee'] }}" alt="logo" width="110"
+                     style="border-radius: 10px; margin-bottom: 30px;">
+            </div>
+        </div>
+
+
+    </div>
+
+    {% endfor %}
+</div>
+</body>
+</html>

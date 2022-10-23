@@ -283,7 +283,7 @@ def indexarray_web_dynamic(tipo):
         print('pdfs_ready', pdfs_ready)
         pdffile = app.config['PDF_FOLDER'] + '{}_{}.pdf'.format(pdfs[0]['registro'], tipo)
         # Variables
-        rendered = render_template('imprimir_registros_web.html', jsonarrawy=pdfs_ready)
+        rendered = render_template('imprimir_registros_web_dynamic.html', jsonarrawy=pdfs_ready)
         pdfkit.from_string(rendered, pdffile, options=options) if os.name != "nt" else pdfkit.from_string(
             rendered, pdffile, options=options, configuration=config)
         return {
