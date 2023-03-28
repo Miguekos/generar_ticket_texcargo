@@ -145,7 +145,7 @@ def indexarray(tipo):
                 _json['registro']['registro'], tipo)
             for d in _json['detalle']['meta_data']:
                 # print("d->", d['key'])
-                if d['key'] == 'rut':
+                if d['key'].lower() == 'rut'.lower():
                     _json['rut'] = d['value']
             try:
                 _json['rut'] = _json['rut'] if len(_json['rut']) > 0 else _json['detalle']['customer_note']
